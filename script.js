@@ -1,7 +1,7 @@
 // New ways of declaring variables
 
 // ES5
-var name5 = 'Ruben Mano';
+/*var name5 = 'Ruben Mano';
 var age5 = 22;
 name5 = 'Cintia Pasto';
 console.log(name5);
@@ -39,7 +39,7 @@ function driversLicense6(passedTest) {
     // this does not work because the variables are block scoped
     // A block is all the code wrapped within the curly braces
     console.log(firstName + ', born in ' + yearOfBirth + ' is now officially allowed to drive a car.');
-    */
+    
 
     // The solution
     // Declare the variables in the scope of the console.log();
@@ -56,4 +56,27 @@ function driversLicense6(passedTest) {
     
 }
 
-driversLicense6(true);
+driversLicense6(true);*/
+
+// Strings
+let firstName = 'John';
+let lastName = 'Smith';
+const year = 1990;
+
+function calcAge(year){
+    return 2019 - year;
+}
+
+// ES5
+console.log('This is ' + firstName + ' ' + lastName + '. He was born in ' + year + '. Today he is ' + calcAge(year) + ' years old.');
+
+// ES6
+console.log(`This is ${firstName} ${lastName}. He was born in ${year}. Today he is ${calcAge(year)} years old.`);
+
+const n = `${firstName} ${lastName}`;
+console.log(n.startsWith('J'));
+console.log(n.endsWith('J'));
+console.log(n.includes('J'));
+// repeats the first name x times
+console.log(`${firstName} `.repeat(3));
+
