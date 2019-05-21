@@ -56,7 +56,7 @@ function driversLicense6(passedTest) {
     
 }
 
-driversLicense6(true);*/
+driversLicense6(true);
 
 // Strings
 let firstName = 'John';
@@ -78,5 +78,34 @@ console.log(n.startsWith('J'));
 console.log(n.endsWith('J'));
 console.log(n.includes('J'));
 // repeats the first name x times
-console.log(`${firstName} `.repeat(3));
+console.log(`${firstName} `.repeat(3));*/
+
+// Arrow Functions
+const years = [1990, 1996, 1991, 1997, 1995];
+
+// ES5
+var ages5 = years.map(function(el){
+    return 2019 - el;
+});
+console.log(ages5);
+
+// ES6
+// With one arg
+let ages6 = years.map(el => 2019 - el);
+console.log(ages6);
+
+// With two args
+ages6 = years.map((el, index) => `Age element ${index + 1} : ${2019 - el}.`);
+console.log(ages6);
+
+// With more tha one line of code
+// use curly braces
+// Use the return keyword
+ages6 = years.map((el, index) => {
+    const now = new Date().getFullYear();
+    const age = now - el;
+    return `Age element ${index + 1} : ${age}.`;
+});
+console.log(ages6);
+
 
