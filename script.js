@@ -78,7 +78,7 @@ console.log(n.startsWith('J'));
 console.log(n.endsWith('J'));
 console.log(n.includes('J'));
 // repeats the first name x times
-console.log(`${firstName} `.repeat(3));*/
+console.log(`${firstName} `.repeat(3));
 
 // Arrow Functions
 const years = [1990, 1996, 1991, 1997, 1995];
@@ -106,6 +106,58 @@ ages6 = years.map((el, index) => {
     const age = now - el;
     return `Age element ${index + 1} : ${age}.`;
 });
-console.log(ages6);
+console.log(ages6);*/
 
+// Lexical This Keyword
+// ES5
+var box5 = {
+    color: 'green',
+    position: 1,
+    clickMe: function(){
+        var self = this;
+        document.querySelector('.green').addEventListener('click', function(){
+            var str = 'This is box number ' + self.position + ' and it is ' + self.color + '.';
+            alert(str);
+        });
+    }
+}
 
+box5.clickMe();
+
+// ES6
+const box6 = {
+    color: 'green',
+    position: 1,
+    clickMe: function(){
+        document.querySelector('.green').addEventListener('click', () => {
+            let str = 'This is box number ' + this.position + ' and it is ' + this.color + '.';
+            alert(str);
+        });
+    }
+}
+
+box6.clickMe();
+
+function Person(name){
+    this.name = name;
+}
+
+// ES5
+Person.prototype.myFriends5 = function(friends){
+    var arr = friends.map(function(el){
+        return this.name + ' is friends with ' + el + '.';
+    }.bind(this));
+    console.log(arr);
+}
+
+var friends = ['John', 'Jane', 'Mark'];
+new Person('Ruben').myFriends5(friends);
+
+// ES6
+Person.prototype.myFriends6 = function(friends){
+    let arr = friends.map( el => `${this.name} is friends with ${el}.`);
+    console.log(arr);
+}
+
+const friends6 = ['John', 'Jane', 'Mark'];
+new Person('Ruben').myFriends6(friends6);
