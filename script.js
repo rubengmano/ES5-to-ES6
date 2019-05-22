@@ -160,7 +160,7 @@ Person.prototype.myFriends6 = function(friends){
 }
 
 const friends6 = ['John', 'Jane', 'Mark'];
-new Person('Ruben').myFriends6(friends6);*/
+new Person('Ruben').myFriends6(friends6);
 
 // Destructuring
 // ES5
@@ -195,4 +195,52 @@ function calcAgeRetirement(year){
 
 const [ageR, retirement] = calcAgeRetirement(1996);
 console.log(ageR);
-console.log(retirement);
+console.log(retirement);*/
+
+// Arrays
+const boxes = document.querySelectorAll('.box');
+
+// ES5 
+var boxesArr5 = Array.prototype.slice.call(boxes);
+// change the color of the boxes
+boxesArr5.forEach(function(cur) {
+    cur.style.backgroundColor = 'dodgerblue';
+});
+
+// ES6
+// It will put all the boxes into the array
+// Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'yellow');
+const boxesArr6 = Array.from(boxes);
+boxesArr6.forEach(cur => cur.style.backgroundColor = 'yellow');
+
+// Loop over
+// ES5
+for(var i = 0; i < boxesArr5.length; i++){
+    if(boxesArr5[i].className === 'box blue'){
+        continue;
+    }
+    boxesArr5[i].textContent = 'I changed color!';
+}
+
+// ES6
+for(const cur of boxesArr6){
+    if(cur.className.includes('blue')){
+        continue;
+    }
+    cur.textContent = 'I changed sex';
+}
+
+// ES5
+var ageArr = [12, 14, 23, 15, 17];
+var full = ageArr.map(function(cur){
+    return cur >= 18;
+})
+
+console.log(full);
+console.log(full.indexOf(true));
+console.log(ageArr[full.indexOf(true)]);
+
+// ES6
+console.log(ageArr.findIndex(cur => cur >= 18));
+// There's no need to calculate the index
+console.log(ageArr.find(cur => cur >= 18));
