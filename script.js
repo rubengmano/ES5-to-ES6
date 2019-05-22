@@ -106,7 +106,7 @@ ages6 = years.map((el, index) => {
     const age = now - el;
     return `Age element ${index + 1} : ${age}.`;
 });
-console.log(ages6);*/
+console.log(ages6);
 
 // Lexical This Keyword
 // ES5
@@ -160,4 +160,39 @@ Person.prototype.myFriends6 = function(friends){
 }
 
 const friends6 = ['John', 'Jane', 'Mark'];
-new Person('Ruben').myFriends6(friends6);
+new Person('Ruben').myFriends6(friends6);*/
+
+// Destructuring
+// ES5
+var john = ['John', 23];
+var nam = john[0];
+var ag = john[1];
+
+// ES6
+const [name, age] = ['John', 23];
+console.log(name);
+console.log(age);
+
+const obj = {
+    firstName: 'John',
+    lastName: 'Smith'
+}
+
+const {firstName, lastName} = obj;
+console.log(firstName);
+console.log(lastName);
+
+// It is possible to use diferent names
+const {firstName: a, lastName: b} = obj;
+console.log(a);
+console.log(b);
+
+// One of it's applications is to return elements in a function
+function calcAgeRetirement(year){
+    const age = new Date().getFullYear() - year;
+    return [age, 65 - age];
+}
+
+const [ageR, retirement] = calcAgeRetirement(1996);
+console.log(ageR);
+console.log(retirement);
