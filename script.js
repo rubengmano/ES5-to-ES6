@@ -195,7 +195,7 @@ function calcAgeRetirement(year){
 
 const [ageR, retirement] = calcAgeRetirement(1996);
 console.log(ageR);
-console.log(retirement);*/
+console.log(retirement);
 
 // Arrays
 const boxes = document.querySelectorAll('.box');
@@ -243,4 +243,38 @@ console.log(ageArr[full.indexOf(true)]);
 // ES6
 console.log(ageArr.findIndex(cur => cur >= 18));
 // There's no need to calculate the index
-console.log(ageArr.find(cur => cur >= 18));
+console.log(ageArr.find(cur => cur >= 18));*/
+
+// The spread Operator
+// It's good to extpand elements of an array in functions 
+function addFourAges(a, b, c, d){
+    return a + b + c + d;
+}
+
+var sum1 = addFourAges(18, 22, 23, 24);
+console.log(sum1);
+
+// ES5
+var ages = [18, 30, 12, 21];
+var sum2 = addFourAges.apply(null, ages);
+console.log(sum2);
+
+// ES6
+// This is the spread operator ... and expands the array
+const max = addFourAges(...ages);
+console.log(max);
+
+const familyMano = ['Pedro', 'Ligia', 'Ruben'];
+const familyM = ['Graca', 'Antonio', 'MM'];
+
+const bigFam = [...familyMano, ...familyM];
+console.log(bigFam);
+
+// because it's selected jus by the name there's no need for the # or the .
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+// put all the elements in the same structure
+const all = [h, ...boxes];
+
+Array.from(all).forEach(cur => cur.style.color = 'purple');
+
