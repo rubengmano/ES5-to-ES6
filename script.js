@@ -243,7 +243,7 @@ console.log(ageArr[full.indexOf(true)]);
 // ES6
 console.log(ageArr.findIndex(cur => cur >= 18));
 // There's no need to calculate the index
-console.log(ageArr.find(cur => cur >= 18));*/
+console.log(ageArr.find(cur => cur >= 18));
 
 // The spread Operator
 // It's good to extpand elements of an array in functions 
@@ -276,5 +276,30 @@ const boxes = document.querySelectorAll('.box');
 // put all the elements in the same structure
 const all = [h, ...boxes];
 
-Array.from(all).forEach(cur => cur.style.color = 'purple');
+Array.from(all).forEach(cur => cur.style.color = 'purple');*/
 
+// Rest Parameters
+// Receive single values and transforms into an array
+
+// ES5
+function isFullAge5(){
+    //console.log(arguments);
+    var argsArr = Array.prototype.slice.call(arguments);
+    console.log(argsArr);
+    argsArr.forEach(function(cur){
+        console.log((2019 - cur) >= 18);  
+    })
+}
+
+isFullAge5(1990, 1996, 2000);
+isFullAge5(1990, 1996, 2000, 2016, 2019);
+
+// ES6
+// It will receive single args and pass them as an array into the function
+function isFullAge6(limit, ...years){
+    console.log(years);
+    years.forEach(cur => console.log((2019 - cur) >= limit));
+};
+
+isFullAge6(16, 1990, 1996, 2000);
+isFullAge6(16, 1990, 1996, 2000, 2016, 2019);
