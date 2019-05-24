@@ -276,7 +276,7 @@ const boxes = document.querySelectorAll('.box');
 // put all the elements in the same structure
 const all = [h, ...boxes];
 
-Array.from(all).forEach(cur => cur.style.color = 'purple');*/
+Array.from(all).forEach(cur => cur.style.color = 'purple');
 
 // Rest Parameters
 // Receive single values and transforms into an array
@@ -302,4 +302,31 @@ function isFullAge6(limit, ...years){
 };
 
 isFullAge6(16, 1990, 1996, 2000);
-isFullAge6(16, 1990, 1996, 2000, 2016, 2019);
+isFullAge6(16, 1990, 1996, 2000, 2016, 2019);*/
+
+// Default Parameters
+// ES5
+function smithPerson(firstName, yearOfBirth, lastName, nationality){
+
+    lastName === undefined ? lastName = 'Smith' : lastName = lastName;
+    nationality === undefined ? nationality = 'Portuguese' : nationality = nationality;
+
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+}
+
+var john = new smithPerson('John', 1996);
+var emily = new smithPerson('Emily', 2000, 'Diaz', 'Spain');
+
+// ES6
+function sebPerson(firstName, yearOfBirth, lastName = 'Seb', nationality = 'American'){
+    this.firstName = firstName;
+    this.yearOfBirth = yearOfBirth;
+    this.lastName = lastName;
+    this.nationality = nationality;
+}
+
+let jonh = new sebPerson('John', 1996);
+let em = new sebPerson('Em', 2000, 'Diaz', 'Spain');
