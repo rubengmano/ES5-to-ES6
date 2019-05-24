@@ -302,7 +302,7 @@ function isFullAge6(limit, ...years){
 };
 
 isFullAge6(16, 1990, 1996, 2000);
-isFullAge6(16, 1990, 1996, 2000, 2016, 2019);*/
+isFullAge6(16, 1990, 1996, 2000, 2016, 2019);
 
 // Default Parameters
 // ES5
@@ -329,4 +329,46 @@ function sebPerson(firstName, yearOfBirth, lastName = 'Seb', nationality = 'Amer
 }
 
 let jonh = new sebPerson('John', 1996);
-let em = new sebPerson('Em', 2000, 'Diaz', 'Spain');
+let em = new sebPerson('Em', 2000, 'Diaz', 'Spain');*/
+
+// Maps - new key-value data structure
+
+const question = new Map();
+// New key value pair
+question.set('question', 'What is the official name of the latest major JavaScript version?');
+question.set(1, 'ES5');
+question.set(2, 'ES6');
+question.set(3, 'ES2015');
+question.set(4, 'ES7');
+question.set('correct', 3);
+question.set(true, 'Correct answer!');
+question.set(false, 'Wrong! Please try again!');
+
+// Retrieve values
+console.log(question.get('question'));
+// Get the size of the map
+// console.log(question.size);
+
+// Remove an element
+question.delete(4);
+
+// check if an element is in the map
+if(question.has(4)){
+    console.log('It has!');
+}
+
+// Clear everything from the map
+// question.clear();
+
+// looping through a map
+// question.forEach((value, key) => console.log(`This is ${key} and it's set to ${value}`)); 
+
+for(let [key, value] of question.entries()){
+    // to access the value it's necessary to destructuring
+    if(typeof(key) === 'number'){
+        console.log(`Answer ${key} : ${value}`);
+    }
+}
+
+const ans = parseInt(prompt('Write the correct answer'));
+console.log(question.get(ans === question.get('correct'))); 
