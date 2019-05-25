@@ -329,7 +329,7 @@ function sebPerson(firstName, yearOfBirth, lastName = 'Seb', nationality = 'Amer
 }
 
 let jonh = new sebPerson('John', 1996);
-let em = new sebPerson('Em', 2000, 'Diaz', 'Spain');*/
+let em = new sebPerson('Em', 2000, 'Diaz', 'Spain');
 
 // Maps - new key-value data structure
 
@@ -371,4 +371,43 @@ for(let [key, value] of question.entries()){
 }
 
 const ans = parseInt(prompt('Write the correct answer'));
-console.log(question.get(ans === question.get('correct'))); 
+console.log(question.get(ans === question.get('correct')));*/
+
+// Classes
+// ES5
+var Person5 = function(name, yearOfBirth, job){
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person5.prototype.calculateAge = function(){
+    var age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(age);
+}
+
+var john = new Person5('John', 1996, 'Student');
+
+// ES6
+// In class definition there is no need for ponctuation
+class Person6 {
+    // all classes need to have the constructor method
+    constructor (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge() {
+        var age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+
+    static greeting() {
+        console.log('Hey there!');
+    }
+}
+
+const manel = new Person6('Manel', 1990, 'Lazy');
+// manel can't call greeting class because of inheritance
+Person6.greeting();
