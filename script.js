@@ -371,7 +371,7 @@ for(let [key, value] of question.entries()){
 }
 
 const ans = parseInt(prompt('Write the correct answer'));
-console.log(question.get(ans === question.get('correct')));*/
+console.log(question.get(ans === question.get('correct')));
 
 // Classes
 // ES5
@@ -410,4 +410,61 @@ class Person6 {
 
 const manel = new Person6('Manel', 1990, 'Lazy');
 // manel can't call greeting class because of inheritance
-Person6.greeting();
+Person6.greeting();*/
+
+// Subclasses: Example of Inheritance
+
+// ES5
+var Person5 = function(name, yearOfBirth, job){
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job;
+}
+
+Person5.prototype.calculateAge = function(){
+    var age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(age);
+}
+
+var Athlete5 = function(name, yearOfBirth, job, olympicGames, medals){
+    Person5.call(this, name, yearOfBirth, job);
+    this.olympicGames = olympicGames;
+    this.medals = medals;
+}
+
+Athlete5.prototype = Object.create(Person5.prototype);
+
+var john = new Athlete5('John', 1990, 'swimmer', 3, 10);
+john.calculateAge();
+
+// ES6
+class Person6 {
+    // all classes need to have the constructor method
+    constructor (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge() {
+        var age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+}
+
+class Athlete6 extends Person6 {
+    constructor(name, yearOfBirth, job, olympicGames, medals){
+        super(name, yearOfBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+
+    wonMedal(){
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+const manel = new Athlete6('Manel', 1990, 'swimmer', 3, 10);
+manel.wonMedal();
+manel.calculateAge();
